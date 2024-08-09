@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Balthazar&family=Bigshot+One&family=Courgette&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Serif+JP:wght@200..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Balthazar&family=Bigshot+One&family=Courgette&family=Hachi+Maru+Pop&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Serif+JP:wght@200..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Balthazar&family=Bigshot+One&family=Courgette&family=Hachi+Maru+Pop&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Serif+JP:wght@200..900&family=Prata&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Balthazar&family=Bigshot+One&family=Cormorant+Unicase:wght@300;400;500;600;700&family=Courgette&family=Hachi+Maru+Pop&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Serif+JP:wght@200..900&family=Prata&display=swap');
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpyGnKdSgtCKZm2k15OcqfHkmbYsORHvMhkw&s');
+            height: 90vh;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            font-family: "Bigshot One", serif;
+            font-weight: 400;
+            font-style: normal;
+            margin-top: 3rem;
+            color: purple;
+            padding: 10px;
+            text-shadow: 0px 0px 10px purple;
+        }
+
+        #name {
+            font-weight: bold;
+            height: 2rem;
+            width: 11rem;
+            text-align: center;
+            margin-left: 5rem;
+           
+           
+        }
+
+        #btn {
+
+            margin: 20px 60px 30px;
+            height: 2rem;
+            width: 5rem;
+            background-color: #97c1A9;
+            border: none;
+            border-radius: 5%;
+            font-weight: bold;
+        }
+
+        #btn:hover {
+            cursor: pointer;
+            background-color: #cce2cb;
+        }
+
+        #clearBtn {
+          
+            height: 2rem;
+            width: 5rem;
+            background-color: #FF968A;
+            border: none;
+            border-radius: 5%;
+            font-weight: bold;
+        }
+
+        #clearBtn:hover {
+            background-color: #fcb9aa;
+            cursor: pointer;
+        }
+
+        .div {
+            margin: auto;
+            padding: 25px;
+            background-color: #ffe5d9;
+            height: 15rem;
+            width: 25rem;
+         border-radius: 5%;
+         box-shadow: 0px 20px 20px pink;
+
+        }
+        #box {
+            color: black;
+
+        }
+
+        .list {
+            font-size: 1.7rem;
+            text-align: center;
+            margin-left: 11rem;
+            font-family: "Prata", serif;
+            color: black;
+            font-weight: bold;
+        }
+
+        .list1 {
+            font-family: "Prata", serif;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-left: 13rem;
+            font-weight: bold;
+            color: black;
+  
+        }
+
+        .list2 {
+            font-family: "Prata", serif;
+            text-align: center;
+            margin-left: 14rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: black
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>LIST FOR TODAY</h1>
+    <p class="list">Dream.</p>
+    <p class="list1">Plan.</p>
+    <p class="list2">Do.</p>
+    <div class="div">
+
+        <input id="name" type="text" placeholder="Enter your items..."><br>
+        <button id="btn" onclick="todo()">ADD</button>
+        <button id="clearBtn">CLEAR ALL</button>
+        <p id="error"></p>
+        <ol id="box"></ol>
+
+    </div>
+  
+
+    <script>
+        function todo() {
+            document.getElementById("error").innerHTML = ""
+            const name = document.getElementById('name').value
+
+            if (name == 0) {
+                document.getElementById("error").innerHTML = "Please enter your item"
+            } else {
+                const box = document.getElementById('box')
+                const li = document.createElement('li')
+                const a = document.createElement('a')
+                a.href = "#"
+                a.style.padding="20px"
+                a.innerHTML = "❌"
+                li.textContent = name
+
+                li.appendChild(a)
+                box.appendChild(li)
+
+                a.addEventListener('click', () => {
+                    li.remove()
+                })
+
+                document.getElementById('name').value = "";
+            }
+        }
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            document.getElementById('box').innerHTML = "";
+        });
+    </script>
+</body>
+
+
+</html>
